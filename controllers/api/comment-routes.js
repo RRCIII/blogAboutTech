@@ -41,3 +41,19 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // POST ~ CREATE NEW COMMENT
+router.post("/", withAuth, async (req, res) => {
+    try {
+      const { comment_text, post_id } = req.body;
+      const dbCommentData = await Comment.create({
+        comment_text,
+        post_id,
+        user_id: req.session.user_id,
+      });
+      res.status(201).json(dbCommentData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
