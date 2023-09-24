@@ -71,3 +71,22 @@ router.post("/", withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // PUT ~ UPDATE USER
+router.put("/:id", async (req, res) => {
+    try {
+      const dbUserData = await User.update(req.body, {
+        where: { id: req.params.id },
+        individualHooks: true,
+      });
+      if (dbUserData[0] === 0) {
+        res.status(404).json({ message: "No user found with this id." });
+        return;
+      }
+      res.status(200).json(dbUserData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
