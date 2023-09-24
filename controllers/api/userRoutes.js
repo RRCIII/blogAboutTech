@@ -90,3 +90,19 @@ router.put("/:id", async (req, res) => {
     }
   });
   
+  // DELETE ~ DELETE USER
+router.delete("/:id", withAuth, async (req, res) => {
+    try {
+      const dbUserData = User.destroy({
+        where: { id: req.params.id },
+      });
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id." });
+        return;
+      }
+      res.status(204).json(dbUserData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
