@@ -106,3 +106,25 @@ router.delete("/:id", withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // Signup
+router.post("/signup", async (req, res) => {
+    try {
+      const { username, email, password } = req.body;
+      const dbUserData = await User.create({ username, email, password });
+  
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+  
+        res.json(dbUserData);
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        error:
+          "Password must be between 3-30 characters; Check if email address is valid;",
+      });
+    }
+  });
