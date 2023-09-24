@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="banner">
+        <h2>Your Source for Tech Related Discussions</h2>
+    </header>
+    <nav>
+        <h2>
+            <a href="/">Tech Blog</a>
+        </h2>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            {{#if loggedIn}}
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+                <a id="logout">Logout</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    <main>
+        <div class="main-container">
+            {{{body}}}
+
+            {{#if isHomePage}}
+            {{#if loggedIn}}
+            <div class="homepage-btn-container">
+                <button class="post-btn">
+                    <a href="/newpost">+ Create New Post</a>    
+                </button>
+            </div>
+            {{/if}}
+            {{/if}}
+        </div>
+    </main>
+
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+
+</html>
