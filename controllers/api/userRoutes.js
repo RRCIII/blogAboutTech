@@ -128,3 +128,29 @@ router.post("/signup", async (req, res) => {
       });
     }
   });
+
+  // Login
+router.post("/login", async (req, res) => {
+    const dbUserData = await User.findOne({
+      where: { email: req.body.email },
+    });
+  
+    if (!dbUserData) {
+      res.status(400).json({ message: "Incorrect email address. Please try again." });
+      return;
+    }
+    const validatePass = dbUserData.validatePassword(req.body.password);
+  
+    if (!validatePass) {
+      res.status(400).json({ message: "Incorrect password. Please try again." });
+      return;
+    }
+  
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+  
+      res.json({ user: dbUserData, message: "You are now logged in." });
+    });
+  });
