@@ -74,4 +74,23 @@ router.put("/:id", withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // DELETE ~ DELETE COMMENT
+router.delete("/:id", withAuth, async (req, res) => {
+    try {
+      const dbCommentData = await Comment.destroy({
+        where: { id: req.params.id },
+      });
+      if (!dbCommentData) {
+        res.status(404).json({ message: "No comment was found to delete." });
+        return;
+      }
+      res.status(204).json(dbCommentData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
+  module.exports = router;
   
