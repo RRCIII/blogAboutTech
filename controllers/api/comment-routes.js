@@ -57,3 +57,21 @@ router.post("/", withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+// PUT ~ UPDATE COMMENT
+router.put("/:id", withAuth, async (req, res) => {
+    try {
+      const dbCommentData = await Comment.update(req.body, {
+        where: { id: req.params.id },
+      });
+      if (dbCommentData[0] === 0) {
+        res.status(404).json({ message: "No comment was found to update." });
+        return;
+      }
+      res.status(200).json(dbCommentData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
