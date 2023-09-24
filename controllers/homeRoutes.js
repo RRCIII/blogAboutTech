@@ -67,3 +67,12 @@ router.get("/", async (req, res) => {
   router.get('/newpost', (req, res) => {
     res.render('hpnewpost', { loggedIn: req.session.loggedIn });
   });
+
+  router.get("/login", (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("login");
+  });
+  
