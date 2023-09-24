@@ -64,3 +64,6 @@ router.get("/", async (req, res) => {
     }
   });
   
+  router.get('/newpost', (req, res) => {
+    res.render('hpnewpost', { loggedIn: req.session.loggedIn });
+  });
