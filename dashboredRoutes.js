@@ -16,3 +16,7 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/newpost', (req, res) => {
+    res.render('dbnewpost', { loggedIn: req.session.loggedIn });
+})
