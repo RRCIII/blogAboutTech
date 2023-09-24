@@ -49,3 +49,25 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // POST ~ CREATE NEW USER
+router.post("/", withAuth, async (req, res) => {
+    try {
+      const { username, email, password } = req.body;
+      const dbUserData = await User.create({
+        username,
+        email,
+        password,
+      });
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+  
+        res.status(201).json(dbUserData);
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
