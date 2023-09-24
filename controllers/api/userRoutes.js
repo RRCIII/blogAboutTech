@@ -19,3 +19,33 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// GET SINGLE USER
+router.get("/:id", async (req, res) => {
+    try {
+      const dbUserData = await User.findOne({
+        attributes: { exclude: ["password"] },
+        where: {
+          id: req.params.id,
+        },
+        include: [
+          { model: Post },
+          {
+            model: Comment,
+            include: {
+              model: Post,
+              attributes: ["id", "title"],
+            },
+          },
+        ],
+      });
+      if (!dbUserData) {
+        res.status(404).json("No user was found.");
+        return;
+      }
+      res.status(200).json(dbUserData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
