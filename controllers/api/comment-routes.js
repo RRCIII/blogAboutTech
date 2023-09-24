@@ -18,3 +18,26 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+// GET SINGLE COMMENT
+router.get("/:id", async (req, res) => {
+    try {
+      const dbCommentData = await Comment.findByPk(req.params.id, {
+        include: [
+          {
+            model: Post,
+            attributes: ["title", "content"],
+          },
+        ],
+      });
+      if (!dbCommentData) {
+        res.status(404).json({ message: "No comment was found." });
+        return;
+      }
+      res.status(200).json(dbCommentData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
