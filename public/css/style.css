@@ -12,7 +12,7 @@ body {
 
 header.banner {
     width: 100%;
-    background-color: dodgerblue;
+    background-color: rgb(24, 25, 24);
     color: #fff;
     text-align: center;
     padding: 5rem 0;
@@ -22,7 +22,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(145, 200, 255);
+    background-color: rgb(44, 244, 4);
     padding: 0.5rem 2rem;
 }
 
@@ -81,7 +81,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: dodgerblue;
+    background-color: rgb(214, 72, 16);
     padding: 0.5rem 0.3rem;
     color: #fff;
 }
