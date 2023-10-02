@@ -1,7 +1,7 @@
 const { Comment } = require("../models");
 
 const newComment = {
-  comment_text: "Wh0daF00k is diS Guy? You'll Do N00TiN, yaH LiTL weeZeL.",
+  comment_text: "Me boy what are you doing?",
   user_id: 5,
   post_id: 3,
 };
