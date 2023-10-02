@@ -26,6 +26,11 @@ const newUsers = [
     email: "uLitlf00knWeeZl@hotmail.com",
     password: "qwer1234",
   },
+  {
+    username: "deez_nodes",
+    email: "Dizzy123@hotmail.com",
+    password: "WhatWhat",
+  },
 ];
 
 const seedUsers = () => User.bulkCreate(newUsers);
