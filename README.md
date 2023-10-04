@@ -14,7 +14,7 @@ MVC designed full stack web application. Create, share, and comment on blog post
 
 - #### Click on the link above to redirect to the Heroku deployed application.
 
-<img width="1000px" src="./img/Screenshot_blogAboutTech_homePage.pn" />
+<img width="1000px" src="./img/Screenshot_blogAboutTech_homePage.png" />
 
 - #### Signup for a new account to access the website.
 
