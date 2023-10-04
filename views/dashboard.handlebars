@@ -1,6 +1,9 @@
-<div class="dashboard-card">    
-    <a href="/dashboard/{{id}}">
-        <p>{{title}}</p>
-        <p>{{format_date createdAt}}</p>
-    </a>
+{{#each data as |db|}}
+{{> dashboard-card}}
+{{/each}}
+
+<div class="db-newpost-container">
+    <button class="post-btn">
+        <a href="/dashboard/newpost">+ Create New Post</a>    
+    </button>
 </div>
