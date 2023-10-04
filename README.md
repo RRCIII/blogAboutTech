@@ -22,7 +22,8 @@ MVC designed full stack web application. Create, share, and comment on blog post
 
 - #### Create a new blog post or leave a comment on a post made by another user.
 
-<img width="500px" src="" />
+<img width="500px" src="./img/Screenshot_blogAboutTech_CreateNewBlog.png" />
+<img width="500px" src="./img/Screenshot_blogAboutTech_CreateNewBlog-posthp.png" />
 <img width="1000px" src="" />
 
 - #### Navigate into the dashboard, to edit or delete a post.
