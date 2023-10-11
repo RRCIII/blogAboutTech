@@ -8,7 +8,7 @@ MVC designed full stack web application. Create, share, and comment on blog post
 
 ## Link to the Deployed Application
 
-- [Click Here]()
+- [Click Here](https://blogabouttech-bbe78e14d63a.herokuapp.com/)
 
 ## Usage
 
